@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun clearEditText() {
-        et.text.clear()
+        et.text.clear();
     }
 
     private fun readWithPermission() {
