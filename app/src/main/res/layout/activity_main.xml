@@ -29,7 +29,8 @@
         android:id="@+id/b_write"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="write1"
+        android:text="write without permission"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/b_clear" />
 
@@ -37,23 +38,27 @@
         android:id="@+id/b_write_with_permission"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="write with permission"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/b_write" />
+        app:layout_constraintTop_toBottomOf="@+id/b_read" />
 
     <Button
         android:id="@+id/b_read"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="read"
+        android:text="read without permission"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/b_clear" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b_write" />
 
     <Button
         android:id="@+id/b_read_with_permission"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="read_with_permission"
+        android:text="read with permission"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/b_write_with_permission" />
 </androidx.constraintlayout.widget.ConstraintLayout>
