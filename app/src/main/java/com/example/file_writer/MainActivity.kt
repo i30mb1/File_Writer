@@ -1,20 +1,23 @@
+@file:Suppress("MemberVisibilityCanBePrivate", "PropertyName", "HasPlatformType")
+
 package com.example.file_writer
 
 import android.os.Bundle
 import android.os.Environment
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.doOnPreDraw
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.File
 
 
 class MainActivity : AppCompatActivity() {
 
-    val FILE_PATH_WITOUHT_PERMISSION by lazy {
+    val FILE_PATH_WITHOUT_PERMISSION by lazy {
         getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS)
     }
     val FILE_PATH_WITH_PERMISSION by lazy {
-        Environment.getExternalStorageDirectory()
+        Environment.getRootDirectory()
     }
     val FILE_NAME = "text.txt"
 
@@ -23,6 +26,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         init()
+
+        b_clear.doOnPreDraw {
+
+        }
     }
 
     private fun init() {
@@ -34,14 +41,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun clearEditText() {
-        et.text.clear();
+        et.text.clear()
     }
 
     private fun readWithPermission() {
         try {
             et.setText(File(FILE_PATH_WITH_PERMISSION, FILE_NAME).readText())
         } catch (e: Exception) {
-            Toast.makeText(this,e.toString(),Toast.LENGTH_LONG).show()
+            Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show()
         }
     }
 
@@ -50,16 +57,17 @@ class MainActivity : AppCompatActivity() {
             File(FILE_PATH_WITH_PERMISSION, FILE_NAME).writeText(et.text.toString())
             clearEditText()
         } catch (e: Exception) {
-            Toast.makeText(this,e.toString(),Toast.LENGTH_LONG).show()
+            Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show()
         }
     }
 
     private fun readWithoutPermission() {
-        et.setText(File(FILE_PATH_WITOUHT_PERMISSION, FILE_NAME).readText())
+        et.setText(File(FILE_PATH_WITHOUT_PERMISSION, FILE_NAME).readText())
     }
 
     private fun writeWithoutPermission() {
-        File(FILE_PATH_WITOUHT_PERMISSION, FILE_NAME).writeText(et.text.toString())
+        File(FILE_PATH_WITHOUT_PERMISSION, FILE_NAME).writeText(et.text.toString())
+        filesDir
         clearEditText()
     }
 }
