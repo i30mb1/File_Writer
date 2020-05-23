@@ -15,6 +15,10 @@ class MainActivity : AppCompatActivity() {
 
     val FILE_PATH_WITHOUT_PERMISSION by lazy {
         getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS)
+//        filesDir
+//        filesDir.absoluteFile
+//        filesDir.parentFile
+//        filesDir.canonicalFile
     }
     val FILE_PATH_WITH_PERMISSION by lazy {
         Environment.getRootDirectory()
