@@ -2,10 +2,12 @@
 
 package com.example.file_writer
 
+import android.Manifest
 import android.os.Bundle
 import android.os.Environment
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.view.doOnPreDraw
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.File
@@ -73,5 +75,13 @@ class MainActivity : AppCompatActivity() {
         File(FILE_PATH_WITHOUT_PERMISSION, FILE_NAME).writeText(et.text.toString())
         filesDir
         clearEditText()
+    }
+
+    private fun askPermission() {
+        val permissions = arrayOf(
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+        )
+        ActivityCompat.requestPermissions(this, permissions, 1)
     }
 }
